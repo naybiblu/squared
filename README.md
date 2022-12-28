@@ -1,38 +1,41 @@
-# create-svelte
+<h1 align="center">
+  Squared
+</h1>
+<p align="center">
+  <a href="https://squared-official.vercel.app/">
+    <img
+     src="https://img.shields.io/badge/CLICK HERE-00008B?style=for-the-badge&logo=none&logoColor=white"/>
+  </a><br>
+  Express yourself in quadrilaterals.
+</p>
+<hr>
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+## Current
 
-## Creating a project
+#### Redesigning website (for user-friendliness)
 
-If you're seeing this, you've probably already done this step. Congrats!
+<hr>
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+## To-do
+  
+#### Basic
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+- [X] Connected to Vercel.
+- [X] \(Feed) Created feed page.
+- [X] \(Feed) Created post creation and fetch mechanism.
+- [X] \(Feed) Implemented loading screen for asynchronous mechanisms.
+- [X] \(Feed) Built lower-thirds for errors and other states.
+- [X] \(Login) Created login/register page.
+- [X] \(Login) Implemented form validation.
+- [X] \(Login) Redirected users not logged-in to the page.
+- [ ] \(Settings) Created settings page.
+- [ ] \(Profile) Created profile page.
+- [ ] Implemented interaction system (like, comment, share).
+- [ ] Added notification system (aka logs).
 
-## Developing
+#### Advanced
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+- [ ] Optimized files.
+- [ ] Added groups.
+- [ ] Added different post types (images, videos, etc.).
+- [ ] Implemented reporting system.
