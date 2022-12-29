@@ -1,5 +1,5 @@
 <script>
-  export let color = "bg-amber-700";
+  export let bg = "amber-700";
 </script>
 
 <style>
@@ -15,18 +15,15 @@
 }
 
 .cube {
-  width: 100%;
-  height: 100%;
-  position: relative;
   transform-style: preserve-3d;
   animation: rotate 2s linear infinite;
 }
 
 .cube__face {
-  position: absolute;
   width: var(--dimension);
   height: var(--dimension);
-  border: 2px solid white;
+  border-width: 2px;
+  border: 3px solid white;
 }
 
 .cube__face--front  { transform: rotateY(  0deg) translateZ(2rem); }
@@ -49,13 +46,19 @@
 }
 </style>
 
-<div class="scene drop-shadow-3xl">
-  <div class="cube">
-    <div class="cube__face cube__face--front {color}"></div>
-    <div class="cube__face cube__face--back {color}"></div>
-    <div class="cube__face cube__face--right {color}"></div>
-    <div class="cube__face cube__face--left {color}"></div>
-    <div class="cube__face cube__face--top {color}"></div>
-    <div class="cube__face cube__face--bottom {color}"></div>
+<div class="scene drop-shadow-3xl dimension">
+  <div class="cube w-full h-full relative">
+    <div class="cube__face absolute 
+      cube__face--front bg-{bg}"></div>
+    <div class="cube__face absolute 
+      cube__face--back bg-{bg}"></div>
+    <div class="cube__face absolute
+      cube__face--right bg-{bg}"></div>
+    <div class="cube__face absolute 
+      cube__face--left bg-{bg}"></div>
+    <div class="cube__face absolute 
+      cube__face--top bg-{bg}"></div>
+    <div class="cube__face absolute 
+      cube__face--bottom bg-{bg}"></div>
   </div>
 </div>

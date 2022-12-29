@@ -1,8 +1,4 @@
-<script>
-    export let color = "bg-amber-700";
-  </script>
-  
-  <style>
+<style>
   :root {
       --amber: rgb(180 83 9);
       --dimension: 200px;
@@ -35,16 +31,15 @@
   .cube__face--left   { transform: rotateY(-90deg) translateZ(100px); }
   .cube__face--top    { transform: rotateX( 90deg) translateZ(100px); }
   .cube__face--bottom { transform: rotateX(-90deg) translateZ(100px); }
-  
-  </style>
+</style>
 
   <div class="scene drop-shadow-4xl">
     <div class="cube">
-      <div class="cube__face cube__face--front {color}"></div>
-      <div class="cube__face cube__face--back {color}"></div>
-      <div class="cube__face cube__face--right {color}"></div>
-      <div class="cube__face cube__face--left {color}"></div>
-      <div class="cube__face cube__face--top {color}"></div>
-      <div class="cube__face cube__face--bottom {color}"></div>
+      <div class="cube__face cube__face--front "></div>
+      <div class="cube__face cube__face--back "></div>
+      <div class="cube__face cube__face--right "></div>
+      <div class="cube__face cube__face--left "></div>
+      <div class="cube__face cube__face--top "></div>
+      <div class="cube__face cube__face--bottom "></div>
     </div>
   </div>
