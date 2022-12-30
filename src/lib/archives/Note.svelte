@@ -1,5 +1,5 @@
 <script>
-    import OptionsBox from "./OptionsBox.svelte";
+    import OptionsBox from "../components/OptionsBox.svelte";
     /**
 	 * @type {any}
 	 */

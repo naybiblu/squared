@@ -24,10 +24,10 @@
 	}
 </script>
 
-<div class="flex flex-col h-screen overflow-y-hidden">
+<div class="flex flex-col h-screen">
 	{#if paths.includes(path)}
 		<Navbar page={index}/>
-		<main class="flex mt-8 h-screen z-0 flex-col">
+		<main class="flex mt-16 h-screen z-0 flex-col">
 			<slot />
 		</main>
 	{:else}
@@ -35,5 +35,4 @@
 			<slot />
 		</main>
 	{/if}
-	<slot/>
 </div>
