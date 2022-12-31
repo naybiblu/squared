@@ -18,7 +18,6 @@ export const actions = {
         const email = data.get("email");
         const pass = data.get("password");
 
-        await connect();
         const uuID = uuid();
 
         if (await users.findOne({ 
@@ -43,7 +42,6 @@ export const actions = {
           },
           authId: uuID
         });
-        await disconnect();
 
         cookies.set("session", uuID, {
           path: '/',

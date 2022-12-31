@@ -28,7 +28,6 @@ export const actions = {
         const text = data.get("text");
         const uuID = uuid(); 
 
-        await connect();
         await posts.create({
             id: uuID,
             type: "text",
@@ -42,8 +41,7 @@ export const actions = {
            username: locals.user.username
         }, {
             $push: { "interactions.posts": uuID }
-        })
-        await disconnect();
+        });
 
         throw redirect(303, "/");
     }

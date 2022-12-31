@@ -15,7 +15,6 @@ export const actions = {
       const email = data.get("email");
       const pass = data.get("pass");
     
-        await connect();
         const uuID = uuid(); 
         const user = await users.findOneAndUpdate({
           credentials: {
@@ -25,7 +24,6 @@ export const actions = {
           }, {
               $set: { authId: uuID }
         });
-        await disconnect();
 
         cookies.set("session", uuID, {
           path: '/',

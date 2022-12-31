@@ -10,7 +10,6 @@ export async function handle({ event, resolve }: any) {
 
     await connect(MONGO_URL);
     const user = await users.findOne({ authId: session });
-    await disconnect();
 
     if (user) {
         event.locals.user = {
