@@ -28,7 +28,7 @@
             <a href="/" class="flex flex-row gap-1 justify-start items-center">
                 <img src="img/logo_solid.svg" alt="squared" class="h-12 invert drop-shadow-lg return">
             </a>
-            <form>
+            <form method="POST" action="?/search">
                 <div class="flex flex-row">
                     <button type="button" class="flex items-center justify-center 
                         bg-white rounded-l-full px-3 cursor-default">

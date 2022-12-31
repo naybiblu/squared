@@ -49,8 +49,6 @@
       cursor: default;
       -webkit-tap-highlight-color: transparent;
       user-select: none;
-      overflow-x: hidden;
-      overflow-y: scroll;
       background: #FFF7E7;
     }
 

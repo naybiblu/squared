@@ -18,9 +18,6 @@ const shortTime = hd.humanizer({
 
 const options = { largest: 1, round: true };
 
-/**
- * @param {number} time
- */
-export function time(time) {
+export function time(time: number) {
     return shortTime(time, options).replace(" ", "");
 }

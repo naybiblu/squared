@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	/** @type {import('./$types').PageData} */
 	//export let data;
 
@@ -12,26 +12,23 @@
 		"/",
 		//data ? `/${data.user.username}` : ""
 	];
-	/**
-	 * @type {number}
-	 */
-	let index;
+	let index: number;
 
 	switch(path) {
 		case "/": index = 1; break;
 		case "/secret": index = 2; break;
 		case "/notes": index = 3; break;
-	}
+	};
 </script>
 
 <div class="flex flex-col h-screen">
 	{#if paths.includes(path)}
 		<Navbar page={index}/>
-		<main class="flex mt-16 h-screen z-0 flex-col">
+		<main class="flex mt-16 h-screen z-0 flex-col overflow-x-hidden overflow-y-scroll">
 			<slot />
 		</main>
 	{:else}
-		<main class="h-screen z-0">
+		<main class="h-screen z-0 overflow-hidden">
 			<slot />
 		</main>
 	{/if}

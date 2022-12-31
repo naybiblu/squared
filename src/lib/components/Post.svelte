@@ -14,13 +14,13 @@
 
 <div class="flex flex-col w-full bg-white rounded-lg shadow-sm
     px-4 py-3 items-center gap-1 relative border-slate-200 border" id={data.id}>
-    <div class="flex flex-row w-full gap-3 justify-center">
-        <div class="h-max w-12 flex flex-col">
+    <div class="flex flex-row w-full gap-4 justify-center">
+        <div class="h-max w-1/12 flex flex-col">
             <a href="/{data.username}">
                 <img src="img/example.jpg" alt="sample" class="rounded-full w-12">
             </a>  
         </div>
-        <div class="w-[28rem] flex flex-col">
+        <div class="w-10/12 flex flex-col">
             <div class="flex flex-row gap-1 full">
                 <a href="/{data.username}" class="hover:underline">
                     <h1 class="opacity-90 font-semibold">
@@ -40,7 +40,7 @@
                 ]}/>
             </div>
         </div>
-        <div class="h-max flex flex-col">
+        <div class="h-max w-1/12 flex flex-col items-center">
             <button class="p-1 hover:bg-slate-100 rounded-full -mt-1"
                 on:click={toggleOptions} on:blur={hide}>
                 <img src="img/arrow.svg" alt="options" 
