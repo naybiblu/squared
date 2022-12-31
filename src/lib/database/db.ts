@@ -1,8 +1,7 @@
 import mongo from 'mongoose';
-import { MONGO_URL } from '$env/static/private';
 
-export const connect = async() => {
-    await mongo.connect(MONGO_URL); 
+export const connect = async(link: string) => {
+    await mongo.connect(link); 
     mongo.Promise = global.Promise;
 }
 export const disconnect = async() => await mongo.disconnect();
