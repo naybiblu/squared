@@ -1,6 +1,5 @@
 import { connect, disconnect } from "$lib/database/db";
 import { model as users } from "$lib/database/models/user";
-import { MONGO_URL } from "$env/static/private";
 
 /** @type {import('@sveltejs/kit').Handle} */
 export async function handle({ event, resolve }: any) {
@@ -8,7 +7,7 @@ export async function handle({ event, resolve }: any) {
 
     if (!session) return await resolve(event);
 
-    await connect(MONGO_URL);
+    await connect();
     const user = await users.findOne({ authId: session });
 
     if (user) {
