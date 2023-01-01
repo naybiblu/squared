@@ -30,7 +30,7 @@
 	<meta name="description" content="Why not log in first before doing $#!7?">
 </svelte:head>
 
-<section class="h-screen w-screen flex justify-start font-['ABC-Regular'] overflow-hidden bg-[url('img/bg.svg')]
+<section class="h-screen w-screen flex justify-start font-['ABC-Regular'] overflow-hidden bg-default
   default-bg">
   <div class="h-full w-1/3 bg-white flex flex-col p-10 gap-3 justify-center items-center sm:w-full
     text-center">
