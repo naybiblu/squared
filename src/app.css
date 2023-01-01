@@ -24,25 +24,14 @@
   .default-bg {
     @apply bg-no-repeat bg-cover bg-center;
   }
+  
+  .bg-default {
+    @apply bg-[url('img/bg.svg')];
+  }
 
 }
 
 @layer base {
-
-    @font-face {
-      font-family: Varella;
-      src: url("/ttf/Varella.ttf");
-    }
-
-    @font-face {
-      font-family: ABC-Regular;
-      src: url("/ttf/ABCRegular.ttf");
-    }
-
-    @font-face {
-      font-family: ABC-Italic;
-      src: url("/ttf/ABCItalic.ttf");
-    }
 
     html {
       font-family: Varella;

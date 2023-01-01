@@ -3,9 +3,9 @@ module.exports = {
   content: ['./src/**/*.{html,js,svelte,ts}'],
   theme: {
     extend: {
-      backgroundImage: {
+      /*backgroundImage: {
         'default': "url('img/bg.svg')"
-      },
+      },*/
       colors: {
         dilaw: {
           100: "#FFF7E7",
