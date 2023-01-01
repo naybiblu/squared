@@ -51,7 +51,7 @@
     </section>
     <section class="h-screen w-1/4 flex gap-3 flex-col">
         <div class="w-full flex flex-col">
-            <div class="h-24 w-full bg-default default-bg rounded-t-lg
+            <div class="h-24 w-full bg-[url('img/bg.svg')] default-bg rounded-t-lg
                 shadow-sm border-t-slate-200 border-x-slate-200 border
                 flex items-center justify-center">
                 <img src="img/github.svg" alt="github" class="h-16">

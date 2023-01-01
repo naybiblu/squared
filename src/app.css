@@ -24,10 +24,6 @@
   .default-bg {
     @apply bg-no-repeat bg-cover bg-center;
   }
-  
-  .bg-default {
-    @apply bg-[url('img/bg.svg')];
-  }
 
 }
 
