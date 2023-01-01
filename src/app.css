@@ -36,6 +36,21 @@
       user-select: none;
       background: #FFF7E7;
     }
+    
+    @font-face {
+      font-family: Varella;
+      src: url("/ttf/Varella.ttf");
+      }
+
+    @font-face {
+      font-family: ABC-Regular;
+      src: url("/ttf/ABCRegular.ttf");
+    }
+
+    @font-face {
+      font-family: ABC-Italic;
+      src: url("/ttf/ABCItalic.ttf");
+    }
 
     .d100 {
       filter: invert(89%) sepia(28%) saturate(236%) hue-rotate(323deg) brightness(105%) contrast(104%);
