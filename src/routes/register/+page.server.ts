@@ -20,6 +20,7 @@ export const actions = {
 
         const uuID = uuid();
 
+        await connect();
         if (await users.findOne({ 
           $or: [
             { "credentials.email": email },
@@ -42,6 +43,7 @@ export const actions = {
           },
           authId: uuID
         });
+        await disconnect();
 
         cookies.set("session", uuID, {
           path: '/',

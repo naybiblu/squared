@@ -1,1 +1,1 @@
-export const storage = new Map();
+export let storage = new Map();

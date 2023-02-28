@@ -16,9 +16,12 @@ export async function handle({ event, resolve }: any) {
             lName: user.name.last,
             username: user.username,
             role: user.username === "naybiblu" ? "DEV" : "USER",
-            email: user.credentials.email
+            email: user.credentials.email,
+            avatar: user.img.avatar
         }
     }
+    
+    await disconnect();
 
     return await resolve(event);
 

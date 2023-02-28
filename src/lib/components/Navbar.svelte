@@ -1,14 +1,11 @@
 <script lang="ts">
-    import OptionsBox from "$lib/components/OptionsBox.svelte";
+    export let page = 1;
+    export let data: any;
 
-    export let page = 2;
-    $: toggle = "scale-0";
+    const { user } = data;
 
-    const toggleOptions = () => {
-        if (toggle === "scale-0") toggle = "scale-100";
-        else toggle = "scale-0";
-    };
-    const hide = () => toggle = "scale-0";
+    const toggleOptions = () => document.getElementById("toggle")?.classList.toggle("hidden");
+    const hide = () => setTimeout(() => document.getElementById("toggle")?.classList.add("hidden"), 100);
     const hideIcon = (e: any) => {
         const button = e.target.parentNode.querySelector("button");
         const img = button.querySelector("img");
@@ -17,7 +14,7 @@
         button.classList.toggle("cursor-default");
     };
     const submit = (e: any) => {
-        if (e.keyCode === "13") e.target.parentNode.parentNode.submit(); console.log("yup!");
+        if (e.keyCode === "13") e.target.parentNode.parentNode.submit();
     };
 </script>
 
@@ -43,7 +40,7 @@
         </div>
         <div class="flex justify-between items-center w-7/12">
             <div class="flex justify-between items-center">
-                <a href="/secret" class="relative flex items-center 
+                <a href="/" class="relative flex items-center 
                     justify-center h-24 w-[4.75rem] rounded-b-full {page === 1 ? "bg-white" : ""} 
                     group/tt">
                     <img src="img/feed.svg" alt="feed" class="h-10 group-hover/tt:scale-110 transition-all
@@ -52,7 +49,7 @@
                         Feed
                     </span>
                 </a>
-                <a href="/" class="relative flex items-center 
+                <a href="/{user.username}" class="relative flex items-center 
                     justify-center h-24 w-[4.75rem] rounded-b-full {page === 2 ? "bg-white" : ""} 
                     group/tt">
                     <img src="img/cube.svg" alt="cube" class="h-10 group-hover/tt:scale-110 transition-all
@@ -72,18 +69,47 @@
                 </a>
             </div>
             <div class="flex justify-start items-center flex-row bg-white 
-                rounded-full gap-2 px-5 py-1">
-                <a href="/">
-                    <img src="img/example.jpg" class="h-10 rounded-full" alt="profile">
-                </a>
-                <button class="group/nav hover:bg-slate-100 rounded-full p-2"
+                rounded-full px-2 py-2 mt-1 hover:bg-slate-100">
+                <button class=" group/nav rounded-full"
                     on:click={toggleOptions} on:blur={hide}>
-                    <img src="img/arrow.svg" class="h-6 a700" alt="menu">
+                    <img src={user.avatar ?? "img/unknown.svg"} class="h-9 rounded-full" alt="profile">
+                    <span class="absolute bottom-3 right-12 p-[0.25px] bg-white rounded-full 
+                        group-hover/nav:bg-slate-100">
+                       <img src="img/arrow.svg" class="h-4 a700" alt="menu"> 
+                    </span>
                 </button>
             </div>
-            <div class="{toggle} absolute right-7 top-4">
-                <OptionsBox options={["Logout", "Settings"]} toggler={toggle}/>
-            </div>
+            <div class="absolute right-10 top-20 flex-col bg-slate-200 shadow-sm
+            text-sm z-10 rounded-md border-slate-300 border hidden divide-y 
+            divide-gray-100 font-bold" id="toggle">
+                <div class="w-full px-4 py-2 pt-3">
+                    {user.fName} {user.lName}<br>
+                    <span class="font-light">@{user.username}</span>
+                </div>
+                <ul class="py-2 flex flex-col items-start justify-center w-full">
+                    {#each [
+                        { name: "Settings", link: "/settings" },
+                        { name: "Logout", form: true }
+                    ] as list}
+                        {#if list.form}
+                            <li class="hover:bg-white w-full px-4 py-2 
+                                {list.name === "Logout" ? "text-amber-700" : ""}">
+                                <form method="POST" class="w-full">
+                                    <button class="w-full flex flex-col items-start justify-start">
+                                        {list.name}
+                                    </button>
+                                </form>
+                            </li>
+                        {:else}
+                            <a href={list.link ?? "/"} class="hover:bg-white w-full px-4 py-2">
+                                <li class="w-full">
+                                   {list.name} 
+                                </li>
+                            </a>
+                        {/if}
+                    {/each}
+                </ul>
+            </div>   
         </div>
     </div>
 </div>

@@ -1,11 +1,15 @@
 import mongo from "mongoose";
 
-const postSchema = new mongo.Schema({ 
+const postSchema = new mongo.Schema({
     id: { type: String, require: true, unique: true },
     type: { type: String, default: "text" },
     content: { type: String, require: true },
     author: {
-        name: { type: String, require: true },
+        name: {
+            first: { type: String, require: true },
+            last: { type: String, require: true }
+        },
+        username: { type: String, require: true },
         img: { type: String, require: true }
     },
     timestamp: { type: Number },

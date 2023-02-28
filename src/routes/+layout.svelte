@@ -1,6 +1,6 @@
 <script lang="ts">
-	/** @type {import('./$types').PageData} */
-	//export let data;
+	/** @type {import('./$types').LayoutData} */
+	export let data: any;
 
 	import Navbar from '$lib/components/Navbar.svelte';
 	import "../app.css";
@@ -10,6 +10,7 @@
 
 	let paths = [
 		"/",
+		"/publish"
 		//data ? `/${data.user.username}` : ""
 	];
 	let index: number;
@@ -23,10 +24,16 @@
 
 <div class="flex flex-col h-screen">
 	{#if paths.includes(path)}
-		<Navbar page={index}/>
-		<main class="flex mt-16 h-screen z-0 flex-col overflow-x-hidden overflow-y-scroll">
-			<slot />
-		</main>
+		<Navbar page={index} data={data}/>
+		{#if path === "/publish"}
+			<main class="h-screen z-0 overflow-hidden">
+				<slot />
+			</main>
+		{:else}
+			<main class="flex mt-16 h-screen z-0 flex-col overflow-x-hidden overflow-y-scroll">
+				<slot />
+			</main>
+		{/if}
 	{:else}
 		<main class="h-screen z-0 overflow-hidden">
 			<slot />

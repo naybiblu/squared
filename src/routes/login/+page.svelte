@@ -65,8 +65,7 @@
       No account? Wtf, then 
       <a href="/register" class="decoration-none hover-underline-animation
         after:bg-amber-700 text-amber-700 font-bold">
-        <Underline text={"register here"}/>
-      </a>!
+        <Underline text={"register here"}/></a>!
     </p>
   </div>
   <div class="h-full w-2/3 backdrop-brightness-50 flex justify-self-end

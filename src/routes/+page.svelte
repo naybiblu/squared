@@ -1,4 +1,9 @@
 <script lang="ts">
+    /** @type {import('./$types').PageData} */
+    export let data: any;
+
+    const { user, post: thought } = data;
+
     import Post from "$lib/components/Post.svelte";
 
     let post = {
@@ -17,6 +22,8 @@
             shares: 0
         }
     }
+
+    const wiggle = () => document.getElementById("publish")?.classList.toggle("animate-wiggle");
 </script>
 
 <svelte:head>
@@ -31,22 +38,32 @@
     <section class="h-screen w-2/5 flex gap-5 flex-col">
         <!-- publish component -->
         <div class="h-16 w-full bg-white rounded-lg shadow-sm
-            flex justify-center items-center gap-2 px-4 py-3 border-slate-200 border">
-            <a href="/" class="w-1/12">
-                <img src="img/example.jpg" alt="sample" class="rounded-full h-10">
+            flex justify-center items-center gap-2 px-4 py-3 border-slate-200 border" id="publish">
+            <a href="/{user.username}" class="w-1/12">
+                <img src={user.avatar ?? "img/unknown.svg"} alt="@{user.username}" class="rounded-full h-10">
             </a>
-            <form class="flex items-center gap-3 w-11/12" action="?/publish">
-                <input type="text" placeholder="Express yourself..." 
-                    class="bg-slate-100 h-10 px-3 outline-none w-11/12 rounded-md">
-                <button type="submit" class="p-2 w-1/12 rounded-md hover:bg-slate-100">
+            <form class="flex items-center gap-3 w-11/12">
+                <a href="/publish" class="w-full">
+                    <input type="text" placeholder="Express yourself..." 
+                        class="bg-slate-100 h-10 px-3 outline-none w-full rounded-md">
+                </a>
+                <button type="submit" class="p-2 w-1/12 rounded-md hover:bg-slate-100" on:click={wiggle}>
                     <img src="img/send.svg" alt="publish" class="h-6 opacity-50">
                 </button>
             </form>
         </div>
         
+        <hr class="bg-gray-100">
+
         <!-- post components-->
         <div class="w-full flex flex-col gap-3">
-            <Post data={post}/>
+        {#each Object.values(JSON.parse(thought)) as idea}
+            <Post data={idea} id={idea?.id}/>
+        {/each}
+        {#each [1, 2, 3, 4, 5, 6, 7, 8] as posts}
+            <Post data={post} id={posts.toString()}/>
+        {/each}
+            <div class="h-1"></div>
         </div>
     </section>
     <section class="h-screen w-1/4 flex gap-3 flex-col">
@@ -70,6 +87,7 @@
                     </button>
                 </a>
             </div>
+            
         </div>
         <!--<div class="h-60 w-full flex flex-col bg-white shadow-sm py-2 px-4
           border-slate-200 border rounded-lg">

@@ -1,7 +1,6 @@
 import mongo from "mongoose";
 
-const userSchema = new mongo.Schema({ 
-    id: { type: String, require: true, unique: true },
+const userSchema = new mongo.Schema({
     name: {
       first: { type: String, require: true, unique: true },
       last: { type: String, require: true, unique: true }
@@ -32,5 +31,5 @@ const userSchema = new mongo.Schema({
       private: { type: Boolean, default: false },
       loggedIn: { type: Boolean, default: true }
     }
-});
+  });
 export const model = mongo.models.users || mongo.model("users", userSchema);

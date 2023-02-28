@@ -6,6 +6,7 @@ declare namespace App {
 			username: string,
 			role: string,
 			email: string
+			avatar: string
 		}
 	}
 }

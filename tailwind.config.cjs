@@ -14,6 +14,18 @@ module.exports = {
           400: "#FABC2F",
           500: "#83631C"
         }
+      },
+      keyframes: {
+        wiggle: {
+          '0%': { transform: 'translateX(0px)', backgroundColor: "red" },
+          '25%': { transform: 'translateX(-5px)' },
+          '50%': { transform: 'translateX(5px)' },
+          '75%': { transform: 'translateX(-5px)' },
+          '100%': { transform: 'translateX(0px)' },
+        }
+      },
+      animation: {
+        wiggle: 'wiggle 0.5s ease-out',
       }
     },
     screens: {

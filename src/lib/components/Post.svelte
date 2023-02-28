@@ -1,15 +1,13 @@
 <script lang="ts">
     import Interaction from "$lib/components/Interaction.svelte";
     import OptionsBox from "$lib/components/OptionsBox.svelte";
+    import { time } from "$lib/helpers/time";
 
     export let data: any;
-    $: toggle = "scale-0";
+    export let id: string;
 
-    const toggleOptions = () => {
-        if (toggle === "scale-0") toggle = "scale-100";
-        else toggle = "scale-0";
-    };
-    const hide = () => toggle = "scale-0";
+    const toggleOptions = () => document.getElementById("toggle" + id)?.classList.toggle("scale-0");
+    const hide = () => setTimeout(() => document.getElementById("toggle" + id)?.classList.add("scale-0"), 100);
 </script>
 
 <div class="flex flex-col w-full bg-white rounded-lg shadow-sm
@@ -17,7 +15,7 @@
     <div class="flex flex-row w-full gap-4 justify-center">
         <div class="h-max w-1/12 flex flex-col">
             <a href="/{data.username}">
-                <img src="img/example.jpg" alt="sample" class="rounded-full w-12">
+                <img src={data.author.img ?? "img/unknown.svg"} alt="sample" class="rounded-full w-12">
             </a>  
         </div>
         <div class="w-10/12 flex flex-col">
@@ -27,7 +25,10 @@
                         {data.author.name.first} {data.author.name.last}
                     </h1>
                 </a>
-                <h1 class="opacity-60">@{data.author.username} · {data.time}</h1>
+                <h1 class="opacity-60">
+                    @{data.author.username} · 
+                    {data.timestamp === Date.now() || data.timestamp + 30 === Date.now() || !data.timestamp ? "now" : time(Date.now() - data.timestamp)}
+                </h1>
             </div>
             <h1 class="font-normal opacity-90 full break-words">
                 {data.content}
@@ -47,6 +48,12 @@
                     class=" h-7 opacity-50">
             </button>
         </div>
-        <OptionsBox options={["Remove", "Report"]} toggler={toggle}/>
+        <div id="toggle{id}" class="scale-0">
+           <OptionsBox options={[
+            { name: "Remove" }, 
+            { name: "Report" }
+            ]}/> 
+        </div>
+        
     </div>
 </div>
