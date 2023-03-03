@@ -44,7 +44,7 @@
 	<meta name="description" content="Join us in our quadrilateral world." />
 </svelte:head>
 
-<section class="h-full w-full flex justify-center items-center font-['ABC-Regular'] overflow-hidden
+<!--<section class="h-full w-full flex justify-center items-center font-['ABC-Regular'] overflow-hidden
   bg-default default-bg">
   <div class="w-2/5 bg-white flex flex-col p-5 gap-3 justify-center items-center sm:w-full
     text-center rounded-3xl">
@@ -101,4 +101,4 @@
       if you have a ducking account already. Tss.
     </p>
   </div>
-</section>
+</section>-->

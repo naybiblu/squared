@@ -29,5 +29,8 @@
 		"uuid": "^9.0.0",
 		"vite": "^4.0.3"
 	},
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"nodemailer": "^6.9.1"
+	}
 }

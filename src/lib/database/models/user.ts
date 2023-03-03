@@ -2,14 +2,15 @@ import mongo from "mongoose";
 
 const userSchema = new mongo.Schema({
     name: {
-      first: { type: String, require: true, unique: true },
-      last: { type: String, require: true, unique: true }
+      first: { type: String, require: true },
+      last: { type: String, require: true }
     },
     username: { type: String, unique: true },
     credentials: {
       email: { type: String, require: true, unique: true },
       password: { type: String, require: true }
     },
+    pronoun: { type: String },
     createdAt: { type: String, require: true },
     img: {
       avatar: String,
@@ -18,6 +19,7 @@ const userSchema = new mongo.Schema({
     biodata: String,
     bday: Number,
     authId: String,
+    badge: Array,
     interactions: {
       posts: Array,
       comments: Array,

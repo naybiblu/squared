@@ -8,21 +8,30 @@
   $: email = "";
   $: pwd = "";
   $: error = form?.error;
-  
+
   const togglePass = () => showPassword = showPassword ? false : true;
-  const reset = () => {
-    setTimeout(() => { error = "" }, 7000);
+  $: reset = (e: any) => {
+    setTimeout(() => { 
+      e.querySelectorAll(".wiggle")?.forEach((w: any) => {
+        if (w.id === "pass") w.childNodes[0].classList.remove("animate-wiggle");
+        else w.classList.remove("animate-wiggle")
+      });
+      error = "";
+    }, 500);
   };
   const inputHandle = (e: any) => {
     pwd = e.target.value;
   };
-  const validator = () => {
-    if (!email) error = "Please provide an email. Hahahahaha.";
-    if (!pwd) error = "Where is your password? It is missing!";
-    reset();
+  const validator = (e: any) => {
+    const { parentNode: element } = e.target;
+    if (!email && !pwd) element.querySelectorAll(".wiggle")?.forEach((w: any) => {
+        if (w.id === "pass") w.childNodes[0].classList.add("animate-wiggle");
+        else w.classList.add("animate-wiggle")
+    });
+    if (!email && pwd) element.childNodes[0]?.classList.add("animate-wiggle");
+    if (email && !pwd) element.childNodes[2]?.childNodes[0].classList.add("animate-wiggle");
+    reset(element);
   };
-
-  reset();
 </script>
 
 <svelte:head>
@@ -46,8 +55,8 @@
     {/if}
     <form class="flex flex-col justify-center items-center gap-3" method="POST">
       <input type="email" class="rounded-full px-5 bg-slate-200
-        h-10 w-72" placeholder="Email" name="email" bind:value={email}>
-      <div class="flex gap-1 flex-row">
+        h-10 w-72 wiggle" placeholder="Email" name="email" bind:value={email} id="email">
+      <div class="flex gap-1 flex-row wiggle" id="pass">
         <input type={showPassword ? "text" : "password"} class="rounded-l-full px-5 bg-slate-200
           h-10 w-60 border" placeholder="Password" name="pass" on:input={inputHandle}>
         <button class="rounded-r-full bg-slate-200 h-10 w-10 hover:bg-amber-700 flex
@@ -63,7 +72,7 @@
     <hr class="bg-gray-300 h-1 w-60 rounded-full my-3">
     <p>
       No account? Wtf, then 
-      <a href="/register" class="decoration-none hover-underline-animation
+      <a href="/register/start" class="decoration-none hover-underline-animation
         after:bg-amber-700 text-amber-700 font-bold">
         <Underline text={"register here"}/></a>!
     </p>

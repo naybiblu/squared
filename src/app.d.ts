@@ -7,6 +7,10 @@ declare namespace App {
 			role: string,
 			email: string
 			avatar: string
+		},
+		temp: {
+			email: string,
+			status: number
 		}
 	}
 }
