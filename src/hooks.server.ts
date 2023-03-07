@@ -6,7 +6,6 @@ export async function handle({ event, resolve }: any) {
     const session = event.cookies.get('session');
     const verify = event.cookies.get('verification');
 
-
     if (!session) return await resolve(event);
 
     await connect();
@@ -30,8 +29,6 @@ export async function handle({ event, resolve }: any) {
             status: 2
         }
     }
-    
-    await disconnect();
 
     return await resolve(event);
 

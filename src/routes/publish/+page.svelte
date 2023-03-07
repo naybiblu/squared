@@ -12,6 +12,7 @@
 	<meta name="description" content="Post something you like to share!" />
 	<meta name="og:description" content="Post something you like to share!" />
     <meta name="og:image" content="img/bg.svg" />
+    <link rel="icon" href="../img/cube_orange.svg" />
 </svelte:head>
 
 <div class="w-full h-full">

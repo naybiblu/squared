@@ -18,7 +18,6 @@ export const actions = {
         const uuID = uuid(); 
         const { user } = locals;
     
-        await connect();
         const createdPost = await posts.create({
             content: post,
             author: {
@@ -38,7 +37,6 @@ export const actions = {
         }, {
             $push: { "interactions.posts": uuID }
         })
-        await disconnect();
  
         throw redirect(303, "/");
     }

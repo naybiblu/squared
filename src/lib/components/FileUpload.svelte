@@ -25,7 +25,7 @@
 
 {#if version === 1}
     <label for="upload" class="cursor-pointer px-8 bg-slate-200 hover:bg-slate-300 rounded-full
-        py-[0.65rem]">
+        py-[0.6rem]">
         {text}
     </label>
     <input type="file" id="upload" class="hidden" accept={accepts} name={name} on:change={displayScript}>

@@ -20,8 +20,6 @@ export const actions = {
         const uuID = uuid();
         const code = generateNumCode(5);
 
-        await connect();
-
         if (await users.findOne({
           "credentials.email": email
         })) return fail(469, { error: "This email address is already taken."});
@@ -43,7 +41,6 @@ export const actions = {
           }, {
             $push: { badge: "unknown" }
         });
-        await disconnect();
 
         await transporter.sendMail({
           from: '"Squared" squaredofficial@gmail.com',

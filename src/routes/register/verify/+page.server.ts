@@ -6,9 +6,7 @@ import { v4 as uuid } from "uuid";
 /** @type {import('./$types').PageServerLoad} */
 export async function load({ locals }: any) {
   if (!locals.temp) throw redirect(302, '/register/start');
-  await connect();
   const user = await users.findOne({ "credentials.email": locals.temp.email });
-  await disconnect();
   if (user.badge.includes("email")) throw redirect(302, "/register/finish");
   if (locals.user) throw redirect(302, '/');
 }
@@ -25,11 +23,8 @@ export const actions = {
           fifth: data.get("fifth")
         };
         const verify = Object.values(code).join("");
-        console.log(verify)
 
         const uuID = uuid();
-
-        await connect();
 
         const user = await users.findOne({
           "credentials.email": locals.temp.email
@@ -47,7 +42,6 @@ export const actions = {
           }, {
             $pull: { badge: "unknown" }
         });
-        await disconnect();
 
         throw redirect(303, "/register/finish");
     }

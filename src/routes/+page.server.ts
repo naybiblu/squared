@@ -6,9 +6,7 @@ import { model as posts } from "$lib/database/models/post";
 export async function load({ locals }: any) {
     if (!locals?.user) throw redirect(302, '/login');
 
-    await connect();
     const allPosts: any = await posts.find();
-    await disconnect();
 
     return { 
         user: locals?.user,

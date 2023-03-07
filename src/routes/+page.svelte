@@ -31,7 +31,7 @@
     <meta name="og:title" content="Squared" />
 	<meta name="description" content="Express yourself in quadrilaterals." />
 	<meta name="og:description" content="Express yourself in quadrilaterals." />
-    <meta name="og:image" content="img/bg.svg" />
+    <link rel="icon" href="../img/cube_orange.svg" />
 </svelte:head>
 
 <div class="h-screen w-screen flex justify-center py-5 gap-5">

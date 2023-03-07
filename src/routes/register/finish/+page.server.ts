@@ -1,16 +1,18 @@
 import { connect, disconnect } from "$lib/database/db";
 import { model as users } from "$lib/database/models/user";
 import { redirect, fail } from '@sveltejs/kit';
+import { invalidate } from '$app/navigation';
 import { v4 as uuid } from "uuid";
 
 /** @type {import('./$types').PageServerLoad} */
 export async function load({ locals }: any) {
   if (!locals.temp) throw redirect(302, "/register/start");
-  await connect();
   const user = await users.findOne({ "credentials.email": locals.temp.email });
-  await disconnect();
+  const allUsers = await users.find();
   if (user.badge.includes("unknown")) throw redirect(302, "/register/verify");
   if (locals.user) throw redirect(302, '/');
+
+  return { users: JSON.stringify({ ...allUsers }) };
 }
 
 /** @type {import('./$types').Actions} */

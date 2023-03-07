@@ -10,33 +10,17 @@
   $: error = form?.error;
 
   const togglePass = () => showPassword = showPassword ? false : true;
-  $: reset = (e: any) => {
-    setTimeout(() => { 
-      e.querySelectorAll(".wiggle")?.forEach((w: any) => {
-        if (w.id === "pass") w.childNodes[0].classList.remove("animate-wiggle");
-        else w.classList.remove("animate-wiggle")
-      });
-      error = "";
-    }, 500);
-  };
+  const removeErr = () => error = "";
   const inputHandle = (e: any) => {
+    removeErr();
     pwd = e.target.value;
-  };
-  const validator = (e: any) => {
-    const { parentNode: element } = e.target;
-    if (!email && !pwd) element.querySelectorAll(".wiggle")?.forEach((w: any) => {
-        if (w.id === "pass") w.childNodes[0].classList.add("animate-wiggle");
-        else w.classList.add("animate-wiggle")
-    });
-    if (!email && pwd) element.childNodes[0]?.classList.add("animate-wiggle");
-    if (email && !pwd) element.childNodes[2]?.childNodes[0].classList.add("animate-wiggle");
-    reset(element);
   };
 </script>
 
 <svelte:head>
   <title>Log in | Squared</title>
 	<meta name="description" content="Why not log in first before doing $#!7?">
+  <link rel="icon" href="../img/cube_orange.svg" />
 </svelte:head>
 
 <section class="h-screen w-screen flex justify-start font-['ABC-Regular'] overflow-hidden bg-default
@@ -54,11 +38,12 @@
       </div>
     {/if}
     <form class="flex flex-col justify-center items-center gap-3" method="POST">
-      <input type="email" class="rounded-full px-5 bg-slate-200
-        h-10 w-72 wiggle" placeholder="Email" name="email" bind:value={email} id="email">
+      <input required type="email" class="rounded-full px-5 bg-slate-200 {!email ? "outline-red-500" : ""}
+        h-10 w-72 wiggle" placeholder="Email" name="email" bind:value={email} id="email" on:input={removeErr}>
       <div class="flex gap-1 flex-row wiggle" id="pass">
         <input type={showPassword ? "text" : "password"} class="rounded-l-full px-5 bg-slate-200
-          h-10 w-60 border" placeholder="Password" name="pass" on:input={inputHandle}>
+          h-10 w-60 border {!pwd ? "outline-red-500" : ""}" required
+          placeholder="Password" name="pass" on:input={inputHandle}>
         <button class="rounded-r-full bg-slate-200 h-10 w-10 hover:bg-amber-700 flex
           justify-center items-center group/eye" on:click={togglePass} type="button">
             <img src="img/{showPassword ? "eyehide" : "eyeshow"}.svg" 
@@ -66,8 +51,10 @@
         </button>
       </div>
       <button type={!email || !pwd || error ? "button" : "submit"} class="rounded-full px-5 bg-amber-700
-        h-10 w-36 text-white font-bold hover:bg-slate-300
-        hover:text-black" on:click={validator}>Log in</button>
+        h-10 w-36 text-white font-bold 
+        {!email || !pwd || error ? "opacity-50 cursor-default" : "hover:bg-slate-300 hover:text-black"}">
+        Log in
+      </button>
     </form>
     <hr class="bg-gray-300 h-1 w-60 rounded-full my-3">
     <p>
