@@ -1,4 +1,3 @@
-import { connect, disconnect } from "$lib/database/db";
 import { model as posts } from "$lib/database/models/post";
 import { model as users } from "$lib/database/models/user";
 import { redirect } from "@sveltejs/kit";

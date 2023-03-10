@@ -22,10 +22,20 @@ module.exports = {
           '50%': { transform: 'translateX(5px)' },
           '75%': { transform: 'translateX(-5px)' },
           '100%': { transform: 'translateX(0px)' },
+        },
+        fadeIn: {
+          '0%': { opacity: "0%" },
+          '100%': { opacity: "100%" }
+        },
+        fadeOut: {
+          '0%': { opacity: "100%" },
+          '100%': { opacity: "0%" }
         }
       },
       animation: {
         wiggle: 'wiggle 0.5s ease-out',
+        fadeIn: 'fadeIn 1s ease-out',
+        fadeOut: 'fadeOut 1s ease-out',
       }
     },
     screens: {

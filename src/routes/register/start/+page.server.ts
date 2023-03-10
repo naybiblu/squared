@@ -1,4 +1,3 @@
-import { connect, disconnect } from "$lib/database/db";
 import { model as users } from "$lib/database/models/user";
 import { redirect, fail } from '@sveltejs/kit';
 import { v4 as uuid } from "uuid";
@@ -16,19 +15,27 @@ export const actions = {
     default: async ({ request, cookies }: any) => {
         const data = await request.formData();
         const email = data.get("email");
+        const un = data.get("username");
 
         const uuID = uuid();
+        const query = await users.find({
+          $or: [
+            { "credentials.email": email },
+            { "username": un }
+          ]
+        });
+        const emailCheck = query.map(q => q.credentials.email).includes(email) ? " email" : "";
+        const unCheck = query.map(q => q.username.toLowerCase()).includes(un.toLowerCase()) ? " username" : "";
+        const linker = emailCheck && unCheck;
         const code = generateNumCode(5);
 
-        if (await users.findOne({
-          "credentials.email": email
-        })) return fail(469, { error: "This email address is already taken."});
+        if (query.length !== 0) return fail(469, { error: `The${emailCheck} ${linker ? "and" : ""}${unCheck} ${linker ? "are" : "is"} already taken.`});
         const user = await users.create({
           name: {
             first: "unknown",
             last: "unknown"
           },
-          username: uuid(),
+          username: un,
           createdAt: Date.now(),
           credentials: {
               email: email,
@@ -45,7 +52,7 @@ export const actions = {
         await transporter.sendMail({
           from: '"Squared" squaredofficial@gmail.com',
           to: email,
-          subject: "Verify your Email Address!",
+          subject: `Verify your account, ${un}!`,
           html: template(code)
         });
 

@@ -1,13 +1,11 @@
-import { connect, disconnect } from "$lib/database/db";
 import { model as users } from "$lib/database/models/user";
 import { redirect, fail } from '@sveltejs/kit';
-import { v4 as uuid } from "uuid";
 
 /** @type {import('./$types').PageServerLoad} */
 export async function load({ locals }: any) {
   if (!locals.temp) throw redirect(302, '/register/start');
   const user = await users.findOne({ "credentials.email": locals.temp.email });
-  if (user.badge.includes("email")) throw redirect(302, "/register/finish");
+  if (user.badge.includes("email") || user.badge.includes("newbie")) throw redirect(302, "/register/finish");
   if (locals.user) throw redirect(302, '/');
 }
 
@@ -23,8 +21,6 @@ export const actions = {
           fifth: data.get("fifth")
         };
         const verify = Object.values(code).join("");
-
-        const uuID = uuid();
 
         const user = await users.findOne({
           "credentials.email": locals.temp.email

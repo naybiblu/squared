@@ -1,6 +1,5 @@
-import { connect, disconnect } from "$lib/database/db";
 import { model as users } from "$lib/database/models/user";
-import { fail, redirect } from "@sveltejs/kit";
+import { redirect, fail } from "@sveltejs/kit";
 import { v4 as uuid } from "uuid";
 
 /** @type {import('./$types').PageServerLoad} */
@@ -17,12 +16,10 @@ export const actions = {
     
         const uuID = uuid(); 
         const user = await users.findOneAndUpdate({
-          credentials: {
-              email: email,
-              password: pass
-          }
-          }, {
-              $set: { authId: uuID }
+          "credentials.email": email,
+          "credentials.password": pass
+        }, {
+          $set: { authId: uuID }
         });
 
         cookies.set("session", uuID, {

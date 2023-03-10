@@ -1,5 +1,4 @@
 import { redirect } from "@sveltejs/kit";
-import { connect, disconnect } from "$lib/database/db";
 import { model as posts } from "$lib/database/models/post";
 
 /** @type {import('./$types').PageServerLoad} */
@@ -21,7 +20,7 @@ export const actions = {
         cookies.set('session', '', {
             path: '/',
             expires: new Date(0),
-        })
+        });
 
         throw redirect(303, "/login");
     }

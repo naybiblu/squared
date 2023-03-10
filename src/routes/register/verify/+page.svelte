@@ -38,7 +38,7 @@
     <div class="flex flex-col justify-center gap-2">
       <img src="../img/cube.svg" alt="squared" class="a700 h-16">
       <h1 class="text-4xl font-extrabold">Register time!</h1>
-      <p>Check your inbox and input the code!</p>
+      <p>Check your email inbox and input the code below!</p>
     </div>
     <hr class="bg-gray-300 h-1 w-60 rounded-full my-3">
     {#if error}
