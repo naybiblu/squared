@@ -3,7 +3,7 @@ import { model as users } from "$lib/database/models/user";
 const PUBLIC_API_KEY = "136501080131";
 
 /** @type {import('@sveltejs/kit').RequestHandler} */
-export async function GET({ params }) {
+export async function GET({ params, request }) {
 
     if (params.key !== PUBLIC_API_KEY) return new Response("You inputted the wrong API key!", { status: 469, statusText: "Unathorized entry" });
 
@@ -13,7 +13,7 @@ export async function GET({ params }) {
 
     await disconnect();
 
-    if (allUsers) return new Response(JSON.stringify(allUsers), { status: 269, statusText: "Success" });
+    if (allUsers) return new Response(JSON.stringify({ users: allUsers, url: request.url }), { status: 269, statusText: "Success" });
     else return new Response("User collection is empty.", { status: 469, statusText: "Failed"});
 };
 
