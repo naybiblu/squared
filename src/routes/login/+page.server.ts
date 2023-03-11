@@ -15,13 +15,13 @@ export const actions = {
       const pass = data.get("pass");
 
         const uuID = uuid();
-        /*const user = await users.findOne({
+        const user = await users.findOne({
           credentials: {
             email: email,
             password: pass
           }
-          }).lean();*/
-        const user = locals.users.filter((u: any) => u.credentials.email === email && u.credentials.password === pass)[0];
+          }).lean();
+        //const user = locals.users.filter((u: any) => u.credentials.email === email && u.credentials.password === pass)[0];
         if (!user) return fail(469, { error: "You gave the wrong credentials." });
         else throw redirect(303, "/");
         
