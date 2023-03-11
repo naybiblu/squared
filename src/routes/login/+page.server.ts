@@ -49,7 +49,7 @@ export const actions = {
         
 
         /*if (true) throw redirect(303, "/");
-        //else return fail(469, { error: "You gave the wrong credentials." });
+        //else return fail(469, { error: "You gave the wrong credentials." });*/
 
     }
   };
