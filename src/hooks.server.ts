@@ -24,7 +24,7 @@ export async function handle({ event, resolve }: any) {
             { authID: session },
             { authID: verify }
         ]
-    });
+    }).limit(2);
     const user = event.locals.user ?? locals.filter((l: any) => l.badge.includes("newbie") ?? l.badge.includes(""))[0];
     const temp = event.locals.temp ?? locals.filter((l: any) => !l.badge.includes("newbie") ?? !l.badge.includes(""))[0];
 
