@@ -40,6 +40,8 @@ export async function handle({ event, resolve }: any) {
             status: 2
         }
     }
+    
+    event.locals.users = await users.find().lean();
 
     return await resolve(event);
 
