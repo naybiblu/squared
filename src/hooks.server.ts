@@ -19,8 +19,14 @@ export async function handle({ event, resolve }: any) {
     
     await connect();
     //await login();
-    const user = event.locals.user ?? await users.findOne({ authId: session });
-    const temp = event.locals.temp ?? await users.findOne({ authId: verify });
+    const locals = await users.find({
+        $or: [
+            { authID: session },
+            { authID: verify }
+        ]
+    });
+    const user = event.locals.user ?? locals.filter((l: any) => l.badge.includes("newbie") ?? l.badge.includes(""))[0];
+    const temp = event.locals.temp ?? locals.filter((l: any) => !l.badge.includes("newbie") ?? !l.badge.includes(""))[0];
 
     if (user) {
         event.locals.user = {
