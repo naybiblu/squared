@@ -4,8 +4,8 @@ import { login, errorLogger } from '$lib/helpers/discord';
 
 /** @type {import('@sveltejs/kit').HandleServerError} */
 export async function handleError({ error }: any) {
-    await connect();
-    await errorLogger(error);
+    await login();
+    await errorLogger(error.message);
     return {
       message: "It's seems you explored an uncharted place.",
       code: error?.code ?? 'UNKNOWN'
@@ -18,7 +18,7 @@ export async function handle({ event, resolve }: any) {
     const verify = event.cookies.get('verification');
 
     if (!session) return await resolve(event);
-    
+    k
     await connect();
     await login();
     const user = await users.findOne({ authId: session });
