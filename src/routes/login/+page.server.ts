@@ -13,11 +13,13 @@ export const actions = {
       const data = await request.formData();
       const email = data.get("email");
       const pass = data.get("pass");
-      
+
         const uuID = uuid(); 
         const user = await users.findOneAndUpdate({
-          "credentials.email": email,
-          "credentials.password": pass
+          credentials: {
+            email: email,
+            password: pass
+          }
         }, {
           $set: { authId: uuID }
         });

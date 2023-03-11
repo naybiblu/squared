@@ -39,6 +39,6 @@ export const getImage = async (username: string, channelType: number) => {
 export const errorLogger = async (err: any) => {
     const guild = await client.guilds.fetch("1082987715387211786");
     const channel: any = await guild.channels.fetch("1084013501233762345");
-    const message = await channel.send(`\`\`\`js${err}\`\`\``);
+    const message = await channel.send(`\`\`\`${err}\`\`\``);
     return message;
 }
