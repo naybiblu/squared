@@ -1,11 +1,9 @@
 import { connect } from "$lib/database/db";
 import { model as users } from "$lib/database/models/user";
-import { login, errorLogger } from '$lib/helpers/discord';
+import { login } from '$lib/helpers/discord';
 
 /** @type {import('@sveltejs/kit').HandleServerError} */
 export async function handleError({ error }: any) {
-    await login();
-    await errorLogger(error.message);
     return {
       message: "It's seems you explored an uncharted place.",
       code: error?.code ?? 'UNKNOWN'
@@ -21,8 +19,8 @@ export async function handle({ event, resolve }: any) {
     
     await connect();
     await login();
-    const user = await users.findOne({ authId: session });
-    const temp = await users.findOne({ authId: verify });
+    const user = event.locals.user ?? await users.findOne({ authId: session });
+    const temp = event.locals.temp ?? await users.findOne({ authId: verify });
 
     if (user) {
         event.locals.user = {

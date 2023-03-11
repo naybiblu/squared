@@ -25,7 +25,7 @@ export const actions = {
             { "username": un }
           ]
         });
-        await errorLogger(query[0].username ?? "none");
+        await errorLogger(query[0]?.username ?? "none");
         const emailCheck = query.map(q => q.credentials.email).includes(email) ? " email" : "";
         const unCheck = query.map(q => q.username.toLowerCase()).includes(un.toLowerCase()) ? " username" : "";
         const linker = emailCheck && unCheck;

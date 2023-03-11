@@ -13,7 +13,7 @@
 </svelte:head>
 
 <section class="h-screen w-screen flex justify-center overflow-hidden items-center bg-[#6366F1]">
-  <img src="img/error_bg.svg" alt="error" class="lg:w-full sm:bottom-5 lg:h-full sm:absolute sm:h-max
+  <img src="../img/error_bg.svg" alt="error" class="lg:w-full sm:bottom-5 lg:h-full sm:absolute sm:h-max
     md:-bottom-8 md:absolute">
   <div class="absolute lg:left-12 xl:left-12 sm:left-0 lg:top-20 xl:top-20 flex flex-col
     sm:flex sm:items-center sm:w-full lg:w-max sm:text-center text-white xl:w-max

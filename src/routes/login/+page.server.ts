@@ -15,23 +15,29 @@ export const actions = {
       const pass = data.get("pass");
 
         const uuID = uuid(); 
-        const user = await users.findOneAndUpdate({
+        const user = await users.findOne({
           credentials: {
-            email: email,
-            password: pass
+              email: email,
+              password: pass
           }
-        }, {
-          $set: { authId: uuID }
         });
+        
+        if (user) {
+          await users.updateOne({
+            "credentials.email": email
+          }, {
+            $set: { authId: uuID }
+          });
 
-        cookies.set("session", uuID, {
-          path: '/',
-          httpOnly: true,
-          sameSite: 'strict',
-          maxAge: 60 * 60 * 24 * 30,
-        })
+          cookies.set("session", uuID, {
+            path: '/',
+            httpOnly: true,
+            sameSite: 'strict',
+            maxAge: 60 * 60 * 24 * 30,
+          })
 
-        if (user) throw redirect(303, "/");
+          throw redirect(303, "/");
+        }
         else return fail(469, { error: "You gave the wrong credentials." });
 
     }
