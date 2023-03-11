@@ -29,10 +29,10 @@
 		<ErrorPage code={$page.status} message="It seems that you broke the site. Joke lang, hahaha."/>
 	{:else}
 		{#if paths.includes(path)}
-			<!--<MediaQuery query="(max-width: 1023px)" let:matches>
+			<MediaQuery query="(max-width: 1023px)" let:matches>
 				{#if matches}
 					<ErrorPage code="808" message="Naybi says, 'hahahaha, no mobile view po hahaha'" backToHome={false}/>
-				{:else}-->
+				{:else}
 					<Navbar page={index} data={data}/>
 					{#if path === "/publish"}
 						<main class="h-screen z-0 overflow-hidden">
@@ -43,8 +43,8 @@
 							<slot />
 						</main>
 					{/if}
-				<!--{/if}
-			</MediaQuery>-->
+				{/if}
+			</MediaQuery>
 		{:else}
 			<main class="h-screen z-0 overflow-hidden">
 				<slot />
