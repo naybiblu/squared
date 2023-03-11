@@ -20,11 +20,16 @@ export const actions = {
             email: email,
             password: pass
           }
-          }).lean();
+          }).lean();*/
+        const user = locals.users.filter((u: any) => u.credentials.email === email && u.credentials.password === pass)[0];
         if (!user) return fail(469, { error: "You gave the wrong credentials." });
+        else throw redirect(303, "/");
         
-        user.set('authId', uuID);
-        user.save();*/
+        await users.updateOne({
+          "credentials.email": email
+        }, {
+          $set: { authId: uuID }
+        });
          
         /*const user = await users.findOneAndUpdate({
           credentials: {
@@ -42,9 +47,8 @@ export const actions = {
           maxAge: 60 * 60 * 24 * 30,
         })
         
-        console.log(locals.users)
 
-        /*if (true)*/ throw redirect(303, "/");
+        /*if (true) throw redirect(303, "/");
         //else return fail(469, { error: "You gave the wrong credentials." });
 
     }
