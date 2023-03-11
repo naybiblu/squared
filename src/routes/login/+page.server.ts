@@ -23,8 +23,8 @@ export const actions = {
           }).lean();
         if (!user) return fail(469, { error: "You gave the wrong credentials." });
         
-        user.set('authId', uuID);
-        user.save();
+        /*user.set('authId', uuID);
+        user.save();*/
          
         /*const user = await users.findOneAndUpdate({
           credentials: {
