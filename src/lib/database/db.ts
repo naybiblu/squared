@@ -1,9 +1,10 @@
 import mongo from 'mongoose';
 import { MONGO_URL } from "$env/static/private";
 
-mongo.set('strictQuery', true);
-
 export const connect = async() => {
+    mongo.set('strictQuery', true);
+    mongo.set('autoIndex', false);
+  
     await mongo.connect(MONGO_URL);
     mongo.Promise = global.Promise;
 }

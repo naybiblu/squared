@@ -14,7 +14,18 @@ export const actions = {
       const email = data.get("email");
       const pass = data.get("pass");
 
-        const uuID = uuid(); 
+        const uuID = uuid();
+        const user = await users.findOne({
+          credentials: {
+            email: email,
+            password: pass
+          }
+          }).lean();
+        if (!user) return fail(469, { error: "You gave the wrong credentials." });
+        
+        user.set('authId', uuID);
+        user.save();
+         
         /*const user = await users.findOneAndUpdate({
           credentials: {
             email: email,
@@ -31,8 +42,8 @@ export const actions = {
           maxAge: 60 * 60 * 24 * 30,
         })
 
-        if (true) throw redirect(303, "/");
-        else return fail(469, { error: "You gave the wrong credentials." });
+        /*if (true)*/ throw redirect(303, "/");
+        //else return fail(469, { error: "You gave the wrong credentials." });
 
     }
   };
