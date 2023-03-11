@@ -18,7 +18,7 @@ export async function handle({ event, resolve }: any) {
     if (!session) return await resolve(event);
     
     await connect();
-    /*await login();
+    await login();
     const locals = await users.find({
         $or: [
             { authID: session },
@@ -44,15 +44,7 @@ export async function handle({ event, resolve }: any) {
             email: temp.credentials.email,
             status: 2
         }
-    }*/
-    
-    event.locals.user = {
-            fName: "Mharc Nyvhie",
-            lName: "Guillermo",
-            username: "naybiblu",
-            role: "naybiblu" === "naybiblu" ? "DEV" : "USER",
-            email: "iamsuperv15@gmail.com"
-     }
+    }
 
     return await resolve(event);
 
