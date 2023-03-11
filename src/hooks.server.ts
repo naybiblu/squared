@@ -18,7 +18,7 @@ export async function handle({ event, resolve }: any) {
     if (!session) return await resolve(event);
     
     await connect();
-    await login();
+    //await login();
     const user = event.locals.user ?? await users.findOne({ authId: session });
     const temp = event.locals.temp ?? await users.findOne({ authId: verify });
 
