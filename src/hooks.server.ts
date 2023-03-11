@@ -18,7 +18,7 @@ export async function handle({ event, resolve }: any) {
     const verify = event.cookies.get('verification');
 
     if (!session) return await resolve(event);
-    k
+    
     await connect();
     await login();
     const user = await users.findOne({ authId: session });
