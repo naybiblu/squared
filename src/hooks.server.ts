@@ -49,3 +49,4 @@ export async function handle({ event, resolve }: any) {
     return await resolve(event);
 
   }
+}
