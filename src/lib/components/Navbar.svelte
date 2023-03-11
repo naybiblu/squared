@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { defaultAv } from '$lib/helpers/image';
+
     export let page = 1;
     export let data: any;
 
@@ -22,9 +24,6 @@
     flex bg-gradient-to-r from-amber-700 to-amber-600 shadow-xl drop-shadow-sm">
     <div class="flex justify-between items-center mb-1 w-full px-10">
         <div class="flex justify-start items-center flex-row gap-3">
-            <a href="/" class="flex flex-row gap-1 justify-start items-center">
-                <img src="img/logo_solid.svg" alt="squared" class="h-12 invert drop-shadow-lg return">
-            </a>
             <form method="POST" action="?/search">
                 <div class="flex flex-row">
                     <button type="button" class="flex items-center justify-center 
@@ -72,7 +71,7 @@
                 rounded-full px-2 py-2 mt-1 hover:bg-slate-100">
                 <button class=" group/nav rounded-full"
                     on:click={toggleOptions} on:blur={hide}>
-                    <img src={user.avatar ?? "img/unknown.svg"} class="h-9 rounded-full" alt="profile">
+                    <img src={user.avatar ?? defaultAv(`${user.fName} ${user.lName}`)} class="h-9 rounded-full" alt="profile">
                     <span class="absolute bottom-3 right-12 p-[0.25px] bg-white rounded-full 
                         group-hover/nav:bg-slate-100">
                        <img src="img/arrow.svg" class="h-4 a700" alt="menu"> 

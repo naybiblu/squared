@@ -1,10 +1,11 @@
 <script lang="ts">
+    import Post from "$lib/components/Post.svelte";
+    import { getRandomInt } from "$lib/helpers/generator";
+
     /** @type {import('./$types').PageData} */
     export let data: any;
 
     const { user, post: thought } = data;
-
-    import Post from "$lib/components/Post.svelte";
 
     let post = {
         author: {
@@ -17,9 +18,9 @@
         content: "Test",
         time: "5d",
         interactions: {
-            likes: 14,
-            comments: 87,
-            shares: 0
+            likes: getRandomInt(0, 100),
+            comments: getRandomInt(0, 100),
+            shares: getRandomInt(0, 100)
         }
     }
 

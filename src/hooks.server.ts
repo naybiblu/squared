@@ -1,18 +1,11 @@
-import { connect, disconnect } from "$lib/database/db";
+import { connect } from "$lib/database/db";
 import { model as users } from "$lib/database/models/user";
 import { login } from '$lib/helpers/discord';
 
 /** @type {import('@sveltejs/kit').HandleServerError} */
-export function handleError({ error }: any) {
-
-    let message = "It's not you. It's us.";
-    switch (error?.code) {
-        case 401:
-        case 403: message = "You are not supposed to be here, right?"; break;
-        case 404: message = "It seems you found an uncharted place.";
-    }
+export function handleError({ error }: any) { 
     return {
-      message: message,
+      message: "It's seems you explored an uncharted place.",
       code: error?.code ?? 'UNKNOWN'
     };
 }

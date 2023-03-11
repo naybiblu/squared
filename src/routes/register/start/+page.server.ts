@@ -60,7 +60,7 @@ export const actions = {
           path: '/register',
           httpOnly: true,
           sameSite: 'strict',
-          maxAge: 60 * 60 * 24 * 30,
+          maxAge: 60 * 60 * 24,
         })
 
         throw redirect(303, "/register/verify");

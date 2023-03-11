@@ -2,6 +2,7 @@
     import Interaction from "$lib/components/Interaction.svelte";
     import OptionsBox from "$lib/components/OptionsBox.svelte";
     import { time } from "$lib/helpers/time";
+    import { defaultAv } from "$lib/helpers/image";
 
     export let data: any;
     export let id: string;
@@ -15,7 +16,8 @@
     <div class="flex flex-row w-full gap-4 justify-center">
         <div class="h-max w-1/12 flex flex-col">
             <a href="/{data.username}">
-                <img src={data.author.img ?? "img/unknown.svg"} alt="sample" class="rounded-full w-12">
+                <img src={data.author.img ?? defaultAv(`${data.author.name.first} ${data.author.name.last}`)} 
+                    alt="sample" class="rounded-full w-12">
             </a>  
         </div>
         <div class="w-10/12 flex flex-col">
