@@ -80,4 +80,3 @@
         <img class="h-8" src="/{icon}.svg" alt="squared">
     </div>-->
 </div>
-

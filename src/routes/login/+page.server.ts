@@ -1,37 +1,39 @@
-import { model as users } from "$lib/database/models/user";
-import { redirect, fail } from "@sveltejs/kit";
-import { v4 as uuid } from "uuid";
+import { model as users } from '$lib/database/models/user';
+import { redirect, fail } from '@sveltejs/kit';
+import { v4 as uuid } from 'uuid';
 
 /** @type {import('./$types').PageServerLoad} */
 export async function load({ locals }: any) {
-  if (locals.user) throw redirect(302, '/')
+	if (locals.user) throw redirect(302, '/');
 }
 
 /** @type {import('./$types').Actions} */
 export const actions = {
-    default: async ({ request, cookies, locals }: any) => {
-      const data = await request.formData();
-      const email = data.get("email");
-      const pass = data.get("pass");
+	default: async ({ request, cookies, locals }: any) => {
+		const data = await request.formData();
+		const email = data.get('email');
+		const pass = data.get('pass');
 
-        const uuID = uuid();
-        const user = await users.findOne({
-          credentials: {
-            email: email,
-            password: pass
-          }
-          }).lean();
-        //const user = locals.users.filter((u: any) => u.credentials.email === email && u.credentials.password === pass)[0];
-        if (!user) return fail(469, { error: "You gave the wrong credentials." });
-        else throw redirect(303, "/");
-        
-        await users.updateOne({
-          "credentials.email": email
-        }, {
-          $set: { authId: uuID }
-        });
-         
-        /*const user = await users.findOneAndUpdate({
+		const uuID = uuid();
+		const user = await users
+			.findOne({
+				'credentials.email': email
+			})
+			.lean();
+
+		if (!user || user.credentials.password !== pass)
+			return fail(469, { error: 'You gave the wrong credentials.' });
+
+		await users.updateOne(
+			{
+				'credentials.email': email
+			},
+			{
+				$set: { authId: uuID }
+			}
+		);
+
+		/*const user = await users.findOneAndUpdate({
           credentials: {
             email: email,
             password: pass
@@ -40,16 +42,15 @@ export const actions = {
           $set: { authId: uuID }
         });*/
 
-        cookies.set("session", uuID, {
-          path: '/',
-          httpOnly: true,
-          sameSite: 'strict',
-          maxAge: 60 * 60 * 24 * 30,
-        })
-        
+		cookies.set('session', uuID, {
+			path: '/',
+			httpOnly: true,
+			sameSite: 'strict',
+			maxAge: 60 * 60 * 24 * 30
+		});
 
-        /*if (true) throw redirect(303, "/");
+		throw redirect(303, '/');
+		/*if (true) throw redirect(303, "/");
         //else return fail(469, { error: "You gave the wrong credentials." });*/
-
-    }
-  };
+	}
+};

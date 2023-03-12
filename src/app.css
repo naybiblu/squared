@@ -3,8 +3,7 @@
 @tailwind utilities;
 
 @layer components {
-
-    /*.sidebar-icon {
+	/*.sidebar-icon {
         @apply relative flex items-center justify-center 
                h-12 w-12 mt-2 mb-2 mx-auto
                hover:bg-white
@@ -13,71 +12,68 @@
                cursor-pointer;
     }*/
 
-  .sidebar-tooltip {
-      @apply absolute w-auto px-3 py-2 min-w-max -bottom-[2.8rem]
+	.sidebar-tooltip {
+		@apply absolute w-auto px-3 py-2 min-w-max -bottom-[2.8rem]
       rounded-full shadow-sm
       text-gray-900 bg-white
       text-xs font-bold
       transition-all duration-200 scale-0 origin-center;
-  }
-  
-  .default-bg {
-    @apply bg-no-repeat bg-cover bg-center;
-  }
+	}
 
+	.default-bg {
+		@apply bg-no-repeat bg-cover bg-center;
+	}
 }
 
 @layer base {
+	html {
+		font-family: Varella;
+		cursor: default;
+		-webkit-tap-highlight-color: transparent;
+		user-select: none;
+		background: #fff7e7;
+	}
 
-    html {
-      font-family: Varella;
-      cursor: default;
-      -webkit-tap-highlight-color: transparent;
-      user-select: none;
-      background: #FFF7E7;
-    }
-    
-    @font-face {
-      font-family: Varella;
-      src: url("/ttf/Varella.ttf");
-      }
+	@font-face {
+		font-family: Varella;
+		src: url('/ttf/Varella.ttf');
+	}
 
-    @font-face {
-      font-family: ABC-Regular;
-      src: url("/ttf/ABCRegular.ttf");
-    }
+	@font-face {
+		font-family: ABC-Regular;
+		src: url('/ttf/ABCRegular.ttf');
+	}
 
-    @font-face {
-      font-family: ABC-Italic;
-      src: url("/ttf/ABCItalic.ttf");
-    }
+	@font-face {
+		font-family: ABC-Italic;
+		src: url('/ttf/ABCItalic.ttf');
+	}
 
-    .d100 {
-      filter: invert(89%) sepia(28%) saturate(236%) hue-rotate(323deg) brightness(105%) contrast(104%);
-    }
+	.d100 {
+		filter: invert(89%) sepia(28%) saturate(236%) hue-rotate(323deg) brightness(105%) contrast(104%);
+	}
 
-    .d200 {
-      filter: invert(90%) sepia(22%) saturate(473%) hue-rotate(320deg) brightness(108%) contrast(101%);
-    }
+	.d200 {
+		filter: invert(90%) sepia(22%) saturate(473%) hue-rotate(320deg) brightness(108%) contrast(101%);
+	}
 
-    .d300 {
-      filter: invert(86%) sepia(27%) saturate(866%) hue-rotate(338deg) brightness(101%) contrast(96%);
-    }
+	.d300 {
+		filter: invert(86%) sepia(27%) saturate(866%) hue-rotate(338deg) brightness(101%) contrast(96%);
+	}
 
-    .d400 {
-      filter: invert(94%) sepia(9%) saturate(7111%) hue-rotate(331deg) brightness(99%) contrast(99%);
-    }
+	.d400 {
+		filter: invert(94%) sepia(9%) saturate(7111%) hue-rotate(331deg) brightness(99%) contrast(99%);
+	}
 
-    .d500 {
-      filter: invert(33%) sepia(85%) saturate(404%) hue-rotate(3deg) brightness(97%) contrast(89%);
-    }
+	.d500 {
+		filter: invert(33%) sepia(85%) saturate(404%) hue-rotate(3deg) brightness(97%) contrast(89%);
+	}
 
-    .a600 {
-      filter: invert(55%) sepia(10%) saturate(6606%) hue-rotate(322deg) brightness(93%) contrast(69%);
-    }
+	.a600 {
+		filter: invert(55%) sepia(10%) saturate(6606%) hue-rotate(322deg) brightness(93%) contrast(69%);
+	}
 
-    .a700 {
-      filter: invert(68%) sepia(99%) saturate(6806%) hue-rotate(24deg) brightness(92%) contrast(93%);
-    }
-
-  }
+	.a700 {
+		filter: invert(68%) sepia(99%) saturate(6806%) hue-rotate(24deg) brightness(92%) contrast(93%);
+	}
+}

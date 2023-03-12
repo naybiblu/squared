@@ -17,17 +17,17 @@
 <hr>
 
 ## To-do
-  
+
 #### Basic
 
-- [X] Connected to Vercel.
-- [X] \(Feed) Created feed page.
-- [X] \(Feed) Created post creation and fetch mechanism.
-- [X] \(Feed) Implemented loading screen for asynchronous mechanisms.
-- [X] \(Feed) Built lower-thirds for errors and other states.
-- [X] \(Login) Created login/register page.
-- [X] \(Login) Implemented form validation.
-- [X] \(Login) Redirected users not logged-in to the page.
+- [x] Connected to Vercel.
+- [x] \(Feed) Created feed page.
+- [x] \(Feed) Created post creation and fetch mechanism.
+- [x] \(Feed) Implemented loading screen for asynchronous mechanisms.
+- [x] \(Feed) Built lower-thirds for errors and other states.
+- [x] \(Login) Created login/register page.
+- [x] \(Login) Implemented form validation.
+- [x] \(Login) Redirected users not logged-in to the page.
 - [ ] \(Settings) Created settings page.
 - [ ] \(Profile) Created profile page.
 - [ ] Implemented interaction system (like, comment, share).

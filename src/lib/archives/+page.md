@@ -64,8 +64,8 @@
 </script>
 
 <svelte:head>
-	<title>Squared</title>
-	<meta name="description" content="Express yourself in quadrilaterals." />
+<title>Squared</title>
+<meta name="description" content="Express yourself in quadrilaterals." />
 </svelte:head>
 
 <section class="flex flex-wrap p-5 gap-5 justify-center relative w-full">
