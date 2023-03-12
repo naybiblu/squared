@@ -26,7 +26,7 @@
 		src="../img/error_bg.svg"
 		alt="error"
 		class="lg:w-full xs:bottom-0 lg:h-full xs:absolute xs:h-max
-    md:-bottom-8 md:fixed sm:bottom-0 sm:absolute sm:h-max"
+    md:bottom-0 md:absolute md:h-max sm:bottom-0 sm:absolute sm:h-max"
 	/>
 	<div
 		class="absolute lg:left-12 xl:left-12 xs:left-0 lg:top-20 xl:top-20 flex flex-col
