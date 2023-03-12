@@ -4,6 +4,7 @@ import { login } from '$lib/helpers/discord';
 
 /** @type {import('@sveltejs/kit').HandleServerError} */
 export async function handleError({ error }: any) {
+    console.log(error);
     return {
       message: "It's seems you explored an uncharted place.",
       code: error?.code ?? 'UNKNOWN'
@@ -40,8 +41,6 @@ export async function handle({ event, resolve }: any) {
             status: 2
         }
     }
-    
-    event.locals.users = await users.find().lean();
 
     return await resolve(event);
 
