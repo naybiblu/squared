@@ -34,7 +34,7 @@
 	>
 		<h1
 			class="font-extrabold text-9xl tracking-[-0.75rem]"
-			style="text-shadow: -10px 3px rgb(105 115 250); font-family: 'ABC-Regular';"
+			style="text-shadow: -10px 3px {color === '#14168d' ? #0a0c8a': '#6973fa'}; font-family: 'ABC-Regular';"
 		>
 			{#each status as char, i}
 				<span class="z-{i}00">{char}</span>
