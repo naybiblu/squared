@@ -1,12 +1,10 @@
 import { connect } from '$lib/database/db';
 import { model as users } from '$lib/database/models/user';
-import { login } from '$lib/helpers/discord';
-import { error as err } from '@sveltejs/kit';
+import { login, errorLogger } from '$lib/helpers/discord';
 
 /** @type {import('@sveltejs/kit').HandleServerError} */
-export async function handleError({ error }: any) {
-	//if (error?.code === 500) throw err(555, "It's not you, it's us.");
-	console.log(error);
+export async function handleError({ error, event }: any) {
+	await errorLogger(error.message, event.url);
 	return {
 		message: "It's seems you explored an uncharted place.",
 		code: error?.code ?? 'UNKNOWN'
