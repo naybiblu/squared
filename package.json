@@ -30,6 +30,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@sveltejs/adapter-auto": "^2.0.0",
 		"discord.js": "^14.7.1",
 		"nodemailer": "^6.9.1",
 		"svelte-media-query": "^1.1.2"
