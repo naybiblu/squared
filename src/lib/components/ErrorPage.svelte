@@ -20,7 +20,7 @@
 	<link rel="icon" href="https://i.imgur.com/As1cV7X.png" />
 </svelte:head>
 
-<section class="h-screen w-screen flex justify-center overflow-hidden items-center"
+<section class="relative h-screen w-screen flex justify-center overflow-hidden items-center"
 	style="background: {color};">
 	<img
 		src="../img/error_bg.svg"
